@@ -7,6 +7,8 @@ function createImageCarousel(images) {
 
   for (const imageSrc of images) {
     const image = document.createElement("img");
+    console.log(imageSrc);
+    image.classList.add("image-for-carousel");
     image.src = imageSrc;
     image.alt = "item in image carousel";
 

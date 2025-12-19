@@ -1,0 +1,19 @@
+.image-carousel {
+  width: 800px;
+  height: 600px;
+  overflow: hidden;
+
+  .all-images {
+    display: grid;
+    place-items: center;
+    grid-template-rows: 600px;
+    grid-auto-columns: 800px;
+    grid-auto-flow: column;
+
+    .image-for-carousel {
+      width: auto;
+      height: 600px;
+      max-width: 800px;
+    }
+  }
+}
