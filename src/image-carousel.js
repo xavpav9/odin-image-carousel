@@ -38,8 +38,8 @@ function createImageCarousel(images) {
   rightArrowImg.src = rightArrow;
   rightBtn.appendChild(rightArrowImg);
 
-  leftBtn.addEventListener("click", evt => goToImage(currentImg - 1));
-  rightBtn.addEventListener("click", evt => goToImage(currentImg + 1));
+  leftBtn.addEventListener("click", () => goToImage(currentImg - 1));
+  rightBtn.addEventListener("click", () => goToImage(currentImg + 1));
 
   const imagePicker = document.createElement("div");
   imagePicker.classList.add("image-picker");
@@ -49,7 +49,7 @@ function createImageCarousel(images) {
     circle.classList.add("circle");
     if (i == 0) circle.classList.add("selected");
 
-    circle.addEventListener("click", evt => {
+    circle.addEventListener("click", () => {
       goToImage(i);
     });
     imagePicker.appendChild(circle);
@@ -66,7 +66,6 @@ function createImageCarousel(images) {
     autoScrollBtn.classList.toggle("manual");
     startTimeout();
   });
-  
 
   function goToImage(imageNumber) {
     if (imageNumber < 0) imageNumber = maxImg;
@@ -85,9 +84,10 @@ function createImageCarousel(images) {
 
   function startTimeout() {
     clearTimeout(currentTimeout);
-    if (autoScroll) currentTimeout = setTimeout(() => {
-      if (autoScroll) goToImage(currentImg + 1);
-    }, 5000);
+    if (autoScroll)
+      currentTimeout = setTimeout(() => {
+        if (autoScroll) goToImage(currentImg + 1);
+      }, 5000);
   }
 
   goToImage(0);

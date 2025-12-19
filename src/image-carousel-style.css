@@ -35,9 +35,15 @@
 
     transition: background-color 0.2s;
     background-color: #88888811;
-    &:hover { background-color: #88888822; }
-    &:active { background-color: #88888844; }
-    &:focus { outline: 1px solid blue; }
+    &:hover {
+      background-color: #88888822;
+    }
+    &:active {
+      background-color: #88888844;
+    }
+    &:focus {
+      outline: 1px solid blue;
+    }
 
     img {
       width: 80%;
@@ -67,13 +73,23 @@
 
       transition: background-color 0.2s;
       background-color: #eee;
-      &:hover { background-color: #ddd; }
-      &:active { background-color: #ccc; }
-      &:focus { outline: 1px solid blue; }
-      &.selected { 
+      &:hover {
+        background-color: #ddd;
+      }
+      &:active {
+        background-color: #ccc;
+      }
+      &:focus {
+        outline: 1px solid blue;
+      }
+      &.selected {
         background-color: #00c;
-        &:hover { background-color: #00c; }
-        &:active { background-color: #00c; }
+        &:hover {
+          background-color: #00c;
+        }
+        &:active {
+          background-color: #00c;
+        }
       }
     }
 
@@ -88,14 +104,24 @@
       font-size: 1rem;
 
       background-color: #0f0;
-      &:hover { background-color: #1f1; }
-      &:active { background-color: #2e2; }
-      &:focus { outline: 1px solid blue; }
+      &:hover {
+        background-color: #1f1;
+      }
+      &:active {
+        background-color: #2e2;
+      }
+      &:focus {
+        outline: 1px solid blue;
+      }
 
       &.manual {
         background-color: #fa0;
-        &:hover { background-color: #f91; }
-        &:active { background-color: #e92; }
+        &:hover {
+          background-color: #f91;
+        }
+        &:active {
+          background-color: #e92;
+        }
       }
     }
   }

@@ -15,10 +15,22 @@ import image11 from "./images/image11.jpg";
 import image12 from "./images/image12.jpg";
 import image13 from "./images/image13.jpg";
 
-const images = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11, image12, image13]
+const images = [
+  image1,
+  image2,
+  image3,
+  image4,
+  image5,
+  image6,
+  image7,
+  image8,
+  image9,
+  image10,
+  image11,
+  image12,
+  image13,
+];
 
 const imageCarousel = createImageCarousel(images);
 
 document.body.appendChild(imageCarousel);
-
-
