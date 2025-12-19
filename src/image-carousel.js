@@ -2,8 +2,11 @@ import rightArrow from "./images/right-arrow.svg";
 import leftArrow from "./images/left-arrow.svg";
 
 function createImageCarousel(images) {
+  if (images.length === 0) return false;
+
   let currentImg = 0;
   const maxImage = images.length - 1;
+  let currentTimeout;
 
   const imageCarousel = document.createElement("div");
   imageCarousel.classList.add("image-carousel");
@@ -60,8 +63,18 @@ function createImageCarousel(images) {
         if (i == currentImg) imagePicker.children[i].classList.add("selected");
         else imagePicker.children[i].classList.remove("selected");
       }
+
+      clearTimeout(currentTimeout);
+      currentTimeout = setTimeout(() => {
+        goToImage(currentImg + 1);
+      }, 5000);
     }
   }
+
+  goToImage(0);
+  currentTimeout = setTimeout(() => {
+    goToImage(currentImg + 1);
+  }, 5000);
 
   pictureDiv.appendChild(allImagesDiv);
   imageCarousel.appendChild(leftBtn);
