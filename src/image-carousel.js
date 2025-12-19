@@ -37,10 +37,29 @@ function createImageCarousel(images) {
   leftBtn.addEventListener("click", evt => goToImage(currentImg - 1));
   rightBtn.addEventListener("click", evt => goToImage(currentImg + 1));
 
+  const imagePicker = document.createElement("div");
+  imagePicker.classList.add("image-picker");
+
+  for (let i = 0; i < images.length; ++i) {
+    const circle = document.createElement("button");
+    circle.classList.add("circle");
+    if (i == 0) circle.classList.add("selected");
+
+    circle.addEventListener("click", evt => {
+      goToImage(i);
+    });
+    imagePicker.appendChild(circle);
+  }
+
   function goToImage(imageNumber) {
     if (maxImage >= imageNumber && imageNumber >= 0) {
       currentImg = imageNumber;
       allImagesDiv.style.left = `-${currentImg * 800}px`;
+
+      for (let i = 0; i < imagePicker.children.length; ++i) {
+        if (i == currentImg) imagePicker.children[i].classList.add("selected");
+        else imagePicker.children[i].classList.remove("selected");
+      }
     }
   }
 
@@ -48,6 +67,7 @@ function createImageCarousel(images) {
   imageCarousel.appendChild(leftBtn);
   imageCarousel.appendChild(pictureDiv);
   imageCarousel.appendChild(rightBtn);
+  imageCarousel.appendChild(imagePicker);
   return imageCarousel;
 }
 

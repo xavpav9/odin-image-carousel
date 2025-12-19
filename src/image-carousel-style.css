@@ -1,6 +1,6 @@
 .image-carousel {
   display: grid;
-  grid-template: 1fr / 50px 800px 50px;
+  grid-template: 600px 50px / 50px 800px 50px;
   border: 1px solid black;
   width: min-content;
 
@@ -37,10 +37,44 @@
     background-color: #88888811;
     &:hover { background-color: #88888822; }
     &:active { background-color: #88888844; }
+    &:focus { outline: 1px solid blue; }
 
     img {
       width: 80%;
       height: auto;
+    }
+  }
+
+  .image-picker {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    border-top: 1px solid black;
+    overflow: scroll;
+    padding: 0px 8px;
+    scrollbar-color: blue transparent;
+    scrollbar-width: thin;
+
+    .circle {
+      appearance: none;
+      cursor: pointer;
+      border: 1px solid black;
+      border-radius: 50%;
+      padding: 10px;
+
+      transition: background-color 0.2s;
+      background-color: #eee;
+      &:hover { background-color: #ddd; }
+      &:active { background-color: #ccc; }
+      &:focus { outline: 1px solid blue; }
+      &.selected { 
+        background-color: #00c;
+        &:hover { background-color: #00c; }
+        &:active { background-color: #00c; }
+      }
     }
   }
 }
