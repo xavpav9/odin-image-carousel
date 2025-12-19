@@ -5,8 +5,9 @@ function createImageCarousel(images) {
   if (images.length === 0) return false;
 
   let currentImg = 0;
-  const maxImage = images.length - 1;
+  const maxImg = images.length - 1;
   let currentTimeout;
+  let autoScroll = true;
 
   const imageCarousel = document.createElement("div");
   imageCarousel.classList.add("image-carousel");
@@ -54,27 +55,42 @@ function createImageCarousel(images) {
     imagePicker.appendChild(circle);
   }
 
+  const autoScrollBtn = document.createElement("button");
+  autoScrollBtn.classList.add("auto-scroll-btn");
+  autoScrollBtn.textContent = "Auto";
+  imagePicker.appendChild(autoScrollBtn);
+
+  autoScrollBtn.addEventListener("click", () => {
+    autoScrollBtn.textContent = autoScroll ? "Manual" : "Auto";
+    autoScroll = !autoScroll;
+    autoScrollBtn.classList.toggle("manual");
+    startTimeout();
+  });
+  
+
   function goToImage(imageNumber) {
-    if (maxImage >= imageNumber && imageNumber >= 0) {
-      currentImg = imageNumber;
-      allImagesDiv.style.left = `-${currentImg * 800}px`;
+    if (imageNumber < 0) imageNumber = maxImg;
+    else if (imageNumber > maxImg) imageNumber = 0;
 
-      for (let i = 0; i < imagePicker.children.length; ++i) {
-        if (i == currentImg) imagePicker.children[i].classList.add("selected");
-        else imagePicker.children[i].classList.remove("selected");
-      }
+    currentImg = imageNumber;
+    allImagesDiv.style.left = `-${currentImg * 800}px`;
 
-      clearTimeout(currentTimeout);
-      currentTimeout = setTimeout(() => {
-        goToImage(currentImg + 1);
-      }, 5000);
+    for (let i = 0; i < imagePicker.children.length; ++i) {
+      if (i == currentImg) imagePicker.children[i].classList.add("selected");
+      else imagePicker.children[i].classList.remove("selected");
     }
+
+    startTimeout();
+  }
+
+  function startTimeout() {
+    clearTimeout(currentTimeout);
+    if (autoScroll) currentTimeout = setTimeout(() => {
+      if (autoScroll) goToImage(currentImg + 1);
+    }, 5000);
   }
 
   goToImage(0);
-  currentTimeout = setTimeout(() => {
-    goToImage(currentImg + 1);
-  }, 5000);
 
   pictureDiv.appendChild(allImagesDiv);
   imageCarousel.appendChild(leftBtn);

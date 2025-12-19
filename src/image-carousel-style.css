@@ -76,5 +76,27 @@
         &:active { background-color: #00c; }
       }
     }
+
+    .auto-scroll-btn {
+      appearance: none;
+      margin-left: 10px;
+      cursor: pointer;
+      border: thin solid black;
+      border-radius: 3px;
+      padding: 2px 4px;
+      font-weight: 700;
+      font-size: 1rem;
+
+      background-color: #0f0;
+      &:hover { background-color: #1f1; }
+      &:active { background-color: #2e2; }
+      &:focus { outline: 1px solid blue; }
+
+      &.manual {
+        background-color: #fa0;
+        &:hover { background-color: #f91; }
+        &:active { background-color: #e92; }
+      }
+    }
   }
 }
